@@ -20,11 +20,24 @@
 						<tr>
 								<th>ID</th>
 								<th>Player</th>
-								<th>#</th>
+								<th>Number</th>
 								<th>Team</th>
 								<th>Price</th>
 						</tr>
 					</thead>
+
+					<tbody>
+						<% jerseys.forEach((jerseys) => { %>
+								<tr>
+									<td><%= jerseys.id %></td>
+									<td><%= jerseys.player %></td>
+									<td><%= jerseys.number %></td>
+									<td><%= jerseys.team %></td>
+									<td><%= jerseys.price %></td>
+								</tr>
+						<% }); %>
+          </tbody>
+			</table>
       </section>
 
     </main>

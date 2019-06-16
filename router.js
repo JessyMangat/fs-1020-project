@@ -1,13 +1,27 @@
 'use strict';
 
 const express = require('express');
+const db = require('./server/db');
 
 const router = express.Router();
 
 
 // Renders the home page
-router.get('/', (req, res) => {
-  res.render('home');
+router.get('/', async (req, res, next) => {
+  try {
+    const jerseys = await db.allJerseys();
+    res
+      .status(200)
+      .render('home', {
+        pageId: 'home',
+        title: 'Home',
+        jerseys: jerseys.map(jerseys => ({
+          ...jerseys,
+        })),
+      });
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.post('/register', (req, res, next) => {

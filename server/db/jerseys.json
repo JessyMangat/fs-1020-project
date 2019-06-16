@@ -1,0 +1,16 @@
+[
+  {
+    "id": "01",
+    "player": "Leonard",
+    "number": "2",
+    "team": "Raptors",
+    "price": "79.99"
+  },
+  {
+    "id": "02",
+    "player": "Lowry",
+    "number": "7",
+    "team": "Raptors",
+    "price": "69.99"
+	}
+]
