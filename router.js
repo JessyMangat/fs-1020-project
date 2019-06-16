@@ -32,8 +32,15 @@ router.post('/login', (req, res, next) => {
   res.statusCode = 202;
 });
 
-router.get('/product', (req, res, next) => {
-  res.statusCode = 200;
+router.get('/product', async (req, res, next) => {
+  try {
+    const allJerseys = await db.allJerseys();
+    res
+      .status(200)
+      .send(allJerseys);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.get('/item/:id', (req, res, next) => {
