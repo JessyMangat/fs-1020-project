@@ -19,6 +19,14 @@ async function writeJerseys(jerseys) {
   await writeFile(filePath, json);
 }
 
+async function getJerseyById(id) {
+  const jersey = await readJerseys();
+  let jerseyId = jersey[id];
+  return jerseyId;
+}
+
 module.exports = {
-  allJerseys: readJerseys,
+  readJerseys,
+  writeJerseys,
+  getJerseyById,
 };

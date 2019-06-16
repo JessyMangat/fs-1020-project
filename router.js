@@ -9,7 +9,7 @@ const router = express.Router();
 // Renders the home page
 router.get('/', async (req, res, next) => {
   try {
-    const jerseys = await db.allJerseys();
+    const jerseys = await db.readJerseys();
     res
       .status(200)
       .render('home', {
@@ -32,9 +32,9 @@ router.post('/login', (req, res, next) => {
   res.statusCode = 202;
 });
 
-router.get('/product', async (req, res, next) => {
+router.get('/item', async (req, res, next) => {
   try {
-    const allJerseys = await db.allJerseys();
+    const allJerseys = await db.readJerseys();
     res
       .status(200)
       .send(allJerseys);
@@ -43,12 +43,33 @@ router.get('/product', async (req, res, next) => {
   }
 });
 
-router.get('/item/:id', (req, res, next) => {
-  res.statusCode = 200;
+router.get('/item/:id', async (req, res, next) => {
+  try {
+    const jersey = await db.getJerseyById(req.params.id);
+    res
+      .json(jersey)
+      .status(200);
+  } catch (error) {
+    next(error);
+  }
 });
 
-router.post('/item', (req, res, next) => {
-  res.statusCode = 200;
+
+router.post('/item', async (req, res, next) => {
+  try {
+    const newJersey = await db.readJerseys({
+      id: req.body.id,
+      player: req.body.player,
+      number: req.body.number,
+      team: req.body.team,
+      price: req.body.price,
+    });
+    res
+      .json(newJersey)
+      .status(200);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.delete('/item/:id', (req, res, next) => {
