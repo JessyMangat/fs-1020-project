@@ -5,8 +5,6 @@ const db = require('./server/db');
 
 const router = express.Router();
 
-
-// Renders the home page
 router.get('/', async (req, res, next) => {
   try {
     const jerseys = await db.readJerseys();
@@ -57,7 +55,7 @@ router.get('/item/:id', async (req, res, next) => {
 
 router.post('/item', async (req, res, next) => {
   try {
-    const newJersey = await db.readJerseys({
+    const newJersey = await db.createNewJersey({
       id: req.body.id,
       player: req.body.player,
       number: req.body.number,

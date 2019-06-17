@@ -21,12 +21,24 @@ async function writeJerseys(jerseys) {
 
 async function getJerseyById(id) {
   const jersey = await readJerseys();
-  let jerseyId = jersey[id];
-  return jerseyId;
+  let jerseyById;
+  jersey.forEach((jersey) => {
+    if (jersey.id === id) {
+      jerseyById = jersey;
+    }
+  });
+  return jerseyById;
+}
+
+async function createNewJersey(newJersey) {
+  const jersey = await readJerseys();
+  jersey.push(newJersey);
+  return writeJerseys(jersey);
 }
 
 module.exports = {
   readJerseys,
   writeJerseys,
   getJerseyById,
+  createNewJersey,
 };

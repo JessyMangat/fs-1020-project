@@ -12,5 +12,26 @@
     "number": "7",
     "team": "Raptors",
     "price": "69.99"
-	}
+  },
+  {
+    "id": "03",
+    "player": "Durant",
+    "number": "35",
+    "team": "Warriors",
+    "price": "19.99"
+  },
+  {
+    "id": "04",
+    "player": "James",
+    "number": "23",
+    "team": "Lakers",
+    "price": "39.99"
+  },
+  {
+    "id": "05",
+    "player": "Bosh",
+    "number": "4",
+    "team": "Raptors",
+    "price": "9.99"
+  }
 ]
