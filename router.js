@@ -70,7 +70,9 @@ router.post('/item', async (req, res, next) => {
   }
 });
 
-router.delete('/item/:id', (req, res, next) => {
+router.delete('/item/:id', async (req, res, next) => {
+await db.removeJerseyById;
+
   res.statusCode = 200;
 });
 

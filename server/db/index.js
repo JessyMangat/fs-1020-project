@@ -36,9 +36,18 @@ async function createNewJersey(newJersey) {
   return writeJerseys(jersey);
 }
 
+async function removeJerseyById(id) {
+  const jersey = await readJerseys();
+  let jerseyByid;
+  if (jersey.id === id) {
+
+  }
+}
+
 module.exports = {
   readJerseys,
   writeJerseys,
   getJerseyById,
   createNewJersey,
+  removeJerseyById
 };
