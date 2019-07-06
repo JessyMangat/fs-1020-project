@@ -20,9 +20,9 @@ async function writeJerseys(jerseys) {
 }
 
 async function getJerseyById(id) {
-  const jersey = await readJerseys();
+  const allJersies = await readJerseys();
   let jerseyById;
-  jersey.forEach((jersey) => {
+  allJersies.forEach((jersey) => {
     if (jersey.id === id) {
       jerseyById = jersey;
     }
@@ -37,12 +37,16 @@ async function createNewJersey(newJersey) {
 }
 
 async function removeJerseyById(id) {
-  const jersey = await readJerseys();
-  let jerseyByid;
-  if (jersey.id === id) {
-
-  }
+  const allJersies = await readJerseys();
+  // 2
+  allJersies.forEach((jersey, i) => {
+    if (jersey.id === id) {
+      allJersies.splice(i, 1);
+    }
+  });
+  return writeJerseys(allJersies);
 }
+
 
 module.exports = {
   readJerseys,
